@@ -48,7 +48,6 @@ Public Class Form1
                     DataGridView1(0, row.Index).Value = "Deleted"
                     DataGridView1.Refresh()
 
-
                 Catch ex As Exception
 
                     If ex.Message.Contains("Could not find directory") Then
@@ -64,7 +63,6 @@ Public Class Form1
                 End Try
 
             Next
-
 
         Else
             'Does nothing and
@@ -85,9 +83,7 @@ Public Class Form1
 
             ' Get the file name.
             Dim path As String = OpenFileDialog1.FileName
-
-            Dim SplitLine() As String
-            Dim TextLine As String = ""
+            Dim TextLine As String
 
             Try
 
@@ -100,14 +96,13 @@ Public Class Form1
                         Loop
                     End Using
                 Else
-                    MsgBox("File Does Not Exist")
+                    MsgBox("File does not exist.")
                 End If
 
             Catch ex As Exception
-
-                ' Report an error.
-                Me.Text = "Error"
-
+                ' Strange error
+                MsgBox(ex.Message, vbCritical, "Applied Systems")
+                Exit Sub
             End Try
 
         End If
